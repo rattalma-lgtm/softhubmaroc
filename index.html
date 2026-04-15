@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="fr" style="background:#0B1120 !important">
+<head>
+<meta charset="UTF-8">
+<meta name="color-scheme" content="dark">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SoftHub Maroc — Création de sites web professionnels</title>
+<meta name="description" content="Création de sites web professionnels au Maroc. Livré en 3 jours. Devis gratuit.">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap');
+  * { margin:0;padding:0;box-sizing:border-box; }
+  body { font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;background:#0B1120 !important;min-height:100vh;display:flex;align-items:flex-start;justify-content:center;padding:32px 16px 80px;position:relative;overflow-x:hidden; }
+  .bg-circle1 { position:fixed;top:-200px;right:-200px;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(232,184,75,0.08),transparent 70%);pointer-events:none; }
+  .bg-circle2 { position:fixed;bottom:-150px;left:-150px;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(232,184,75,0.05),transparent 70%);pointer-events:none; }
+  .dots { position:fixed;inset:0;background-image:radial-gradient(circle,rgba(255,255,255,0.02) 1px,transparent 1px);background-size:35px 35px;pointer-events:none; }
+  .container { width:100%;max-width:480px;position:relative;z-index:2; }
+  .header { text-align:center;margin-bottom:28px; }
+  .logo-wrap { width:100px;height:100px;background:linear-gradient(135deg,#E8B84B,#C49B34);border-radius:28px;display:flex;align-items:center;justify-content:center;margin:0 auto 16px;box-shadow:0 8px 32px rgba(232,184,75,0.3); }
+  .name { font-size:26px;font-weight:900;color:#fff;margin-bottom:6px; }
+  .name span { color:#E8B84B; }
+  .tagline { font-size:14px;color:rgba(255,255,255,0.6);margin-bottom:14px;line-height:1.5; }
+  .badge-row { display:flex;align-items:center;justify-content:center;gap:8px;flex-wrap:wrap; }
+  .badge { display:inline-flex;align-items:center;gap:6px;background:rgba(232,184,75,0.12);border:1px solid rgba(232,184,75,0.3);color:#E8B84B;font-size:12px;font-weight:700;padding:6px 14px;border-radius:20px; }
+  .badge-dot { width:7px;height:7px;background:#4ade80;border-radius:50%;animation:pulse 2s infinite; }
+  @keyframes pulse { 0%,100%{opacity:1}50%{opacity:0.4} }
+  .badge2 { display:inline-flex;align-items:center;gap:6px;background:rgba(74,222,128,0.1);border:1px solid rgba(74,222,128,0.3);color:#4ade80;font-size:12px;font-weight:700;padding:6px 14px;border-radius:20px; }
+  .hero-banner { background:linear-gradient(135deg,rgba(232,184,75,0.15),rgba(232,184,75,0.05));border:1.5px solid rgba(232,184,75,0.3);border-radius:20px;padding:20px;margin-bottom:24px;text-align:center; }
+  .hero-emoji { font-size:36px;margin-bottom:8px;display:block; }
+  .hero-title { font-size:20px;font-weight:900;color:#fff;margin-bottom:6px;line-height:1.3; }
+  .hero-title span { color:#E8B84B; }
+  .hero-sub { font-size:13px;color:rgba(255,255,255,0.55);line-height:1.5; }
+  .stats { display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:24px; }
+  .stat { background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.07);border-radius:16px;padding:16px 10px;text-align:center; }
+  .stat-n { font-size:24px;font-weight:900;color:#E8B84B; }
+  .stat-l { font-size:11px;color:rgba(255,255,255,0.55);margin-top:4px;font-weight:600; }
+  .section-label { font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:0.14em;color:rgba(255,255,255,0.4);margin:24px 0 12px;padding-left:4px; }
+  .link-btn { display:flex;align-items:center;gap:14px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.08);border-radius:18px;padding:16px 18px;margin-bottom:10px;text-decoration:none;transition:all 0.2s;cursor:pointer;width:100%; }
+  .link-btn:hover { background:rgba(255,255,255,0.09);transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,0.2); }
+  .link-btn.whatsapp { background:rgba(37,211,102,0.1);border-color:rgba(37,211,102,0.3); }
+  .link-btn.whatsapp:hover { background:rgba(37,211,102,0.18); }
+  .link-icon { width:46px;height:46px;border-radius:13px;display:flex;align-items:center;justify-content:center;flex-shrink:0; }
+  .link-content { flex:1;text-align:left; }
+  .link-title { font-size:15px;font-weight:800;color:#fff;margin-bottom:3px; }
+  .link-sub { font-size:12px;color:rgba(255,255,255,0.55);font-weight:500; }
+  .link-arrow { color:rgba(255,255,255,0.4);font-size:18px;font-weight:700; }
+  .link-btn.whatsapp .link-title { color:#4ade80; }
+  .link-btn.whatsapp .link-arrow { color:rgba(74,222,128,0.5); }
+
+  /* PORTFOLIO */
+  .portfolio-grid { display:flex;flex-direction:column;gap:10px;margin-bottom:10px; }
+  .portfolio-card { border-radius:18px;padding:18px;text-decoration:none;display:flex;align-items:center;gap:14px;transition:all 0.2s; }
+  .portfolio-card:hover { transform:translateY(-2px);box-shadow:0 12px 32px rgba(0,0,0,0.3); }
+  .portfolio-card.riad { background:linear-gradient(135deg,rgba(196,155,100,0.18),rgba(196,155,100,0.06));border:1.5px solid rgba(196,155,100,0.45); }
+  .portfolio-card.voiture { background:linear-gradient(135deg,rgba(232,184,75,0.18),rgba(251,146,60,0.08));border:1.5px solid rgba(232,184,75,0.45); }
+  .portfolio-card.industriel { background:linear-gradient(135deg,rgba(59,130,246,0.18),rgba(59,130,246,0.06));border:1.5px solid rgba(59,130,246,0.45); }
+  .portfolio-card.industriel .portfolio-card-icon { background:rgba(59,130,246,0.2); }
+  .portfolio-card.industriel .portfolio-card-sector { color:rgba(96,165,250,0.8); }
+  .portfolio-card.industriel .portfolio-card-url { color:rgba(96,165,250,0.7); }
+  .portfolio-card-icon { width:50px;height:50px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:24px;flex-shrink:0; }
+  .portfolio-card.riad .portfolio-card-icon { background:rgba(196,155,100,0.2); }
+  .portfolio-card.voiture .portfolio-card-icon { background:rgba(232,184,75,0.2); }
+  .portfolio-card-content { flex:1; }
+  .portfolio-card-sector { font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:0.1em;margin-bottom:4px; }
+  .portfolio-card.riad .portfolio-card-sector { color:rgba(196,155,100,0.8); }
+  .portfolio-card.voiture .portfolio-card-sector { color:rgba(232,184,75,0.8); }
+  .portfolio-card-name { font-size:16px;font-weight:900;color:#fff;margin-bottom:3px; }
+  .portfolio-card-url { font-size:12px;font-weight:600; }
+  .portfolio-card.riad .portfolio-card-url { color:rgba(196,155,100,0.7); }
+  .portfolio-card.voiture .portfolio-card-url { color:rgba(232,184,75,0.7); }
+  .portfolio-card-btn { border-radius:10px;padding:10px 14px;font-size:12px;font-weight:800;white-space:nowrap; }
+  .portfolio-card.riad .portfolio-card-btn { background:rgba(196,155,100,0.2);color:#C49B64; }
+  .portfolio-card.voiture .portfolio-card-btn { background:rgba(232,184,75,0.2);color:#E8B84B; }
+
+  /* PACKS */
+  .packs { display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-bottom:10px; }
+  .pack { background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:16px;padding:16px 10px;text-align:center;text-decoration:none;transition:all 0.2s; }
+  .pack:hover { transform:translateY(-2px); }
+  .pack.popular { background:rgba(232,184,75,0.12);border-color:rgba(232,184,75,0.4); }
+  .pack-medal { font-size:22px;margin-bottom:8px;display:block; }
+  .pack-name { font-size:12px;font-weight:800;color:rgba(255,255,255,0.65);margin-bottom:6px; }
+  .pack.popular .pack-name { color:#E8B84B; }
+  .pack-price { font-size:16px;font-weight:900;color:#fff; }
+  .pack.popular .pack-price { color:#E8B84B; }
+  .pack-sub { font-size:10px;color:rgba(255,255,255,0.45);margin-top:3px; }
+
+  /* SERVICES */
+  .service-row { display:flex;gap:8px;margin-bottom:10px; }
+  .service-btn { flex:1;display:flex;align-items:center;gap:12px;border-radius:16px;padding:14px 16px;text-decoration:none;transition:all 0.2s; }
+  .service-btn:hover { transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,0.2); }
+
+  /* SECTORS */
+  .sectors { display:flex;flex-wrap:wrap;gap:7px;margin-bottom:10px; }
+  .sec { background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);color:rgba(255,255,255,0.8);font-size:12px;font-weight:600;padding:6px 12px;border-radius:20px; }
+  .sec.gold { background:rgba(232,184,75,0.1);border-color:rgba(232,184,75,0.3);color:#E8B84B; }
+
+  /* CTA */
+  .cta-banner { background:linear-gradient(135deg,rgba(37,211,102,0.15),rgba(37,211,102,0.05));border:1.5px solid rgba(37,211,102,0.35);border-radius:20px;padding:20px;margin-bottom:10px;text-align:center; }
+  .cta-banner-title { font-size:18px;font-weight:900;color:#fff;margin-bottom:6px; }
+  .cta-banner-sub { font-size:13px;color:rgba(255,255,255,0.55);margin-bottom:16px;line-height:1.5; }
+  .cta-banner-btn { display:inline-flex;align-items:center;gap:10px;background:#25D366;border-radius:14px;padding:14px 28px;text-decoration:none;transition:all 0.2s; }
+  .cta-banner-btn:hover { transform:translateY(-2px);box-shadow:0 8px 24px rgba(37,211,102,0.3); }
+  .cta-banner-btn-text { font-size:15px;font-weight:800;color:#fff; }
+  .footer { text-align:center;margin-top:32px;padding-top:20px;border-top:1px solid rgba(255,255,255,0.06); }
+  .footer-text { font-size:12px;color:rgba(255,255,255,0.35); }
+  .footer-text span { color:#E8B84B; }
+
+  /* ── ADVANCED EFFECTS ── */
+
+  /* Particle canvas */
+  #particles { position:fixed;inset:0;z-index:0;pointer-events:none; }
+
+  /* Glow cursor */
+  .glow-cursor {
+    width:300px; height:300px;
+    border-radius:50%;
+    background: radial-gradient(circle, rgba(232,184,75,0.06) 0%, transparent 70%);
+    position:fixed; pointer-events:none; z-index:1;
+    transform:translate(-50%,-50%);
+    transition: all 0.15s ease;
+  }
+
+  /* Floating logo */
+  @keyframes float {
+    0%,100% { transform:translateY(0px) rotate(0deg); }
+    33% { transform:translateY(-8px) rotate(1deg); }
+    66% { transform:translateY(-4px) rotate(-1deg); }
+  }
+  .logo-wrap { animation: float 4s ease-in-out infinite; }
+
+  /* Shimmer on gold elements */
+  @keyframes shimmer {
+    0% { background-position: -200% center; }
+    100% { background-position: 200% center; }
+  }
+
+  .name {
+    background: linear-gradient(90deg, #fff 0%, #fff 30%, #E8B84B 50%, #fff 70%, #fff 100%);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: shimmer 4s linear infinite;
+  }
+
+  /* Typewriter cursor */
+  .typewriter-cursor {
+    display:inline-block;
+    width:3px; height:1em;
+    background:#E8B84B;
+    margin-left:3px;
+    vertical-align:middle;
+    animation: blink 0.8s step-end infinite;
+  }
+  @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
+
+  /* Entrance animations */
+  .fade-in {
+    opacity:0;
+    transform:translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  .fade-in.visible { opacity:1; transform:translateY(0); }
+
+  /* Glow on hover for buttons */
+  .link-btn.whatsapp:hover {
+    box-shadow: 0 0 20px rgba(37,211,102,0.25), 0 8px 24px rgba(0,0,0,0.2) !important;
+  }
+
+  .cta-banner-btn:hover {
+    box-shadow: 0 0 30px rgba(37,211,102,0.4), 0 8px 24px rgba(37,211,102,0.3) !important;
+  }
+
+  /* Gold glow on pack popular */
+  .pack.popular {
+    box-shadow: 0 0 20px rgba(232,184,75,0.15);
+    animation: goldPulse 3s ease-in-out infinite;
+  }
+  @keyframes goldPulse {
+    0%,100% { box-shadow: 0 0 20px rgba(232,184,75,0.15); }
+    50% { box-shadow: 0 0 35px rgba(232,184,75,0.3); }
+  }
+
+  /* Logo glow */
+  .logo-wrap {
+    box-shadow: 0 8px 32px rgba(232,184,75,0.3), 0 0 0 0 rgba(232,184,75,0.4);
+    animation: float 4s ease-in-out infinite, logoGlow 3s ease-in-out infinite;
+  }
+  @keyframes logoGlow {
+    0%,100% { box-shadow: 0 8px 32px rgba(232,184,75,0.3); }
+    50% { box-shadow: 0 8px 48px rgba(232,184,75,0.55), 0 0 60px rgba(232,184,75,0.15); }
+  }
+
+  /* Counter number animation */
+  .stat-n { transition: all 0.3s; }
+  .stat:hover .stat-n { color:#fff; text-shadow: 0 0 20px rgba(232,184,75,0.8); transform:scale(1.1); display:inline-block; }
+
+  /* Scroll progress bar */
+  #progress-bar {
+    position:fixed; top:0; left:0; height:2px;
+    background: linear-gradient(90deg, #E8B84B, #C49B34);
+    z-index:999; width:0%;
+    transition: width 0.1s;
+    box-shadow: 0 0 8px rgba(232,184,75,0.6);
+  }
+
+  /* Portfolio card shine effect */
+  .portfolio-card { position:relative; overflow:hidden; }
+  .portfolio-card::before {
+    content:'';
+    position:absolute;
+    top:-50%; left:-60%;
+    width:40%; height:200%;
+    background: linear-gradient(to right, transparent, rgba(255,255,255,0.06), transparent);
+    transform: skewX(-20deg);
+    transition: left 0.5s ease;
+  }
+  .portfolio-card:hover::before { left:120%; }
+
+  /* Section label animation */
+  .section-label {
+    position:relative;
+    overflow:hidden;
+  }
+  .section-label::after {
+    content:'';
+    position:absolute;
+    bottom:0; left:0;
+    width:0; height:1px;
+    background: rgba(232,184,75,0.4);
+    transition: width 0.5s ease;
+  }
+
+  /* Badge bounce */
+  .badge2 { animation: badgeBounce 2s ease-in-out infinite; }
+  @keyframes badgeBounce {
+    0%,100% { transform:translateY(0); }
+    50% { transform:translateY(-3px); }
+  }
+
+  /* Service btn glow on hover */
+  .service-btn:hover { box-shadow: 0 8px 30px rgba(0,0,0,0.3) !important; }
+
+</style>
+</head>
+<body style="background:#0B1120 !important">
+<div id="progress-bar"></div>
+<canvas id="particles"></canvas>
+<div class="glow-cursor" id="glowCursor"></div>
+<div class="bg-circle1"></div><div class="bg-circle2"></div><div class="dots"></div>
+<div class="container">
+
+  <div class="header fade-in">
+    <div class="logo-wrap">
+      <svg width="52" height="52" viewBox="0 0 24 24" fill="none" stroke="#0B1120" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/><polyline points="9,8 12,5 15,8"/></svg>
+    </div>
+    <div class="name">Soft<span>Hub</span> Maroc</div>
+    <div class="tagline">Votre agence web au Maroc 🇲🇦<br>Sites professionnels · Rapides · Clé en main</div>
+    <div class="badge-row">
+      <div class="badge"><span class="badge-dot"></span> Disponible maintenant</div>
+      <div class="badge2">⚡ Livraison en 3 jours</div>
+    </div>
+  </div>
+
+  <div class="hero-banner fade-in">
+    <span class="hero-emoji">🚀</span>
+    <div class="hero-title" id="typewriterTarget">Votre business mérite un site<br><span>web professionnel !</span></div>
+    <div class="hero-sub">Réservations en ligne · SEO Google · Multilingue<br>Clients 24h/24 · Zéro commission</div>
+  </div>
+
+  <div class="stats fade-in">
+    <div class="stat"><div class="stat-n">3j</div><div class="stat-l">Livraison</div></div>
+    <div class="stat"><div class="stat-n">5★</div><div class="stat-l">Qualité</div></div>
+    <div class="stat"><div class="stat-n">5</div><div class="stat-l">Langues</div></div>
+  </div>
+
+  <div class="section-label">Contact direct</div>
+  <a href="https://wa.me/212661280205?text=Bonjour%2C%20je%20voudrais%20un%20devis%20pour%20mon%20site%20web%20!" class="link-btn whatsapp">
+    <div class="link-icon" style="background:#25D366"><svg width="26" height="26" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg></div>
+    <div class="link-content"><div class="link-title">💬 WhatsApp — 0661 280 205</div><div class="link-sub">Réponse en moins d'1 heure · Devis GRATUIT</div></div>
+    <div class="link-arrow">→</div>
+  </a>
+  <a href="https://www.instagram.com/softhub_maroc" target="_blank" class="link-btn">
+    <div class="link-icon" style="background:linear-gradient(135deg,#833ab4,#fd1d1d,#fcb045)"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="white" stroke="none"/></svg></div>
+    <div class="link-content"><div class="link-title">📸 @softhub_maroc</div><div class="link-sub">Suivez-nous · Réalisations · Conseils gratuits</div></div>
+    <div class="link-arrow">→</div>
+  </a>
+
+  <div class="section-label">🏆 Portfolio — Nos réalisations</div>
+  <div class="portfolio-grid">
+    <a href="https://darrosie.com" target="_blank" class="portfolio-card riad">
+      <div class="portfolio-card-icon">🏛️</div>
+      <div class="portfolio-card-content">
+        <div class="portfolio-card-sector">🏨 Hôtel · Riad · Marrakech</div>
+        <div class="portfolio-card-name">Dar Rosie</div>
+        <div class="portfolio-card-url">🌐 darrosie.com</div>
+      </div>
+      <div class="portfolio-card-btn">Voir →</div>
+    </a>
+    <a href="https://bascocarrent.com" target="_blank" class="portfolio-card voiture">
+      <div class="portfolio-card-icon">🚗</div>
+      <div class="portfolio-card-content">
+        <div class="portfolio-card-sector">🚗 Location voiture · Safi</div>
+        <div class="portfolio-card-name">Basco Rent Car</div>
+        <div class="portfolio-card-url">🌐 bascocarrent.com</div>
+      </div>
+      <div class="portfolio-card-btn">Voir →</div>
+    </a>
+    <a href="https://globalfixmaroc.com" target="_blank" class="portfolio-card industriel">
+      <div class="portfolio-card-icon">🔩</div>
+      <div class="portfolio-card-content">
+        <div class="portfolio-card-sector">🏭 Société Industrielle · Maroc</div>
+        <div class="portfolio-card-name">Global Fix Maroc</div>
+        <div class="portfolio-card-url">🌐 globalfixmaroc.com</div>
+      </div>
+      <div class="portfolio-card-btn" style="background:rgba(59,130,246,0.2);color:#60a5fa;">Voir →</div>
+    </a>
+  </div>
+
+  <div class="section-label">Nos tarifs</div>
+  <div class="packs">
+    <a href="https://wa.me/212661280205?text=Je%20suis%20interesse%20par%20le%20Pack%20Essentiel" class="pack">
+      <span class="pack-medal">🥉</span>
+      <div class="pack-name">Essentiel</div>
+      <div class="pack-price">1 500</div>
+      <div class="pack-sub">MAD</div>
+    </a>
+    <a href="https://wa.me/212661280205?text=Je%20suis%20interesse%20par%20le%20Pack%20Standard" class="pack popular">
+      <span class="pack-medal">⭐</span>
+      <div class="pack-name">Standard</div>
+      <div class="pack-price">2 500</div>
+      <div class="pack-sub">MAD</div>
+    </a>
+    <a href="https://wa.me/212661280205?text=Je%20suis%20interesse%20par%20le%20Pack%20Premium" class="pack">
+      <span class="pack-medal">🥇</span>
+      <div class="pack-name">Premium</div>
+      <div class="pack-price">4 000</div>
+      <div class="pack-sub">MAD</div>
+    </a>
+  </div>
+
+  <div class="section-label">Nos services</div>
+  <div class="service-row">
+    <a href="https://wa.me/212661280205?text=Je%20voudrais%20un%20site%20pour%20mon%20hotel%20ou%20riad" class="service-btn" style="background:linear-gradient(135deg,rgba(196,155,100,0.18),rgba(196,155,100,0.06));border:1.5px solid rgba(196,155,100,0.4);">
+      <div style="width:42px;height:42px;border-radius:12px;background:rgba(196,155,100,0.2);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:20px">🏨</div>
+      <div><div style="font-size:14px;font-weight:800;color:#C49B64;margin-bottom:2px">Hôtel · Riad</div><div style="font-size:11px;color:rgba(196,155,100,0.6)">Zéro commission</div></div>
+    </a>
+    <a href="https://wa.me/212661280205?text=Je%20voudrais%20un%20site%20pour%20mon%20spa" class="service-btn" style="background:linear-gradient(135deg,rgba(236,72,153,0.15),rgba(236,72,153,0.05));border:1.5px solid rgba(236,72,153,0.35);">
+      <div style="width:42px;height:42px;border-radius:12px;background:rgba(236,72,153,0.15);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:20px">💆</div>
+      <div><div style="font-size:14px;font-weight:800;color:#f472b6;margin-bottom:2px">Spa · Beauté</div><div style="font-size:11px;color:rgba(244,114,182,0.6)">RDV en ligne</div></div>
+    </a>
+  </div>
+  <div class="service-row">
+    <a href="https://wa.me/212661280205?text=Je%20voudrais%20un%20site%20pour%20mon%20restaurant" class="service-btn" style="background:linear-gradient(135deg,rgba(251,146,60,0.15),rgba(251,146,60,0.05));border:1.5px solid rgba(251,146,60,0.35);">
+      <div style="width:42px;height:42px;border-radius:12px;background:rgba(251,146,60,0.15);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:20px">🍽️</div>
+      <div><div style="font-size:14px;font-weight:800;color:#fb923c;margin-bottom:2px">Restaurant</div><div style="font-size:11px;color:rgba(251,146,60,0.6)">Menu · Livraison</div></div>
+    </a>
+    <a href="https://wa.me/212661280205?text=Je%20voudrais%20un%20site%20medical" class="service-btn" style="background:linear-gradient(135deg,rgba(59,130,246,0.15),rgba(59,130,246,0.05));border:1.5px solid rgba(59,130,246,0.35);">
+      <div style="width:42px;height:42px;border-radius:12px;background:rgba(59,130,246,0.15);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:20px">🏥</div>
+      <div><div style="font-size:14px;font-weight:800;color:#60a5fa;margin-bottom:2px">Médecin</div><div style="font-size:11px;color:rgba(96,165,250,0.6)">RDV automatique</div></div>
+    </a>
+  </div>
+  <div class="service-row">
+    <a href="https://wa.me/212661280205?text=Je%20voudrais%20un%20site%20pour%20mon%20agence%20de%20voiture" class="service-btn" style="background:linear-gradient(135deg,rgba(232,184,75,0.18),rgba(251,146,60,0.08));border:1.5px solid rgba(232,184,75,0.4);">
+      <div style="width:42px;height:42px;border-radius:12px;background:rgba(232,184,75,0.2);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:20px">🚗</div>
+      <div><div style="font-size:14px;font-weight:800;color:#E8B84B;margin-bottom:2px">Location voiture</div><div style="font-size:11px;color:rgba(232,184,75,0.6)">Réservation en ligne</div></div>
+    </a>
+    <a href="https://wa.me/212661280205?text=Je%20voudrais%20un%20site%20pour%20mon%20business" class="service-btn" style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);">
+      <div style="width:42px;height:42px;border-radius:12px;background:rgba(255,255,255,0.08);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:20px">✨</div>
+      <div><div style="font-size:14px;font-weight:800;color:#fff;margin-bottom:2px">Autre secteur</div><div style="font-size:11px;color:rgba(255,255,255,0.45)">Tous les business</div></div>
+    </a>
+  </div>
+
+  <div class="section-label">Tous les secteurs</div>
+  <div class="sectors">
+    <span class="sec gold">🏨 Hôtel & Riad</span>
+    <span class="sec gold">💆 Spa & Beauté</span>
+    <span class="sec">🍽️ Restaurant</span>
+    <span class="sec">🚗 Location voiture</span>
+    <span class="sec">🏥 Médecin</span>
+    <span class="sec">🏗️ Immobilier</span>
+    <span class="sec">🎓 Formation</span>
+    <span class="sec">🛍️ Commerce</span>
+    <span class="sec">✈️ Tourisme</span>
+    <span class="sec">⚖️ Avocat</span>
+    <span class="sec">🎉 Événements</span>
+    <span class="sec">+ bien plus</span>
+  </div>
+
+  <div class="section-label">Commencer maintenant</div>
+  <div class="cta-banner">
+    <div class="cta-banner-title">🎁 Devis 100% GRATUIT !</div>
+    <div class="cta-banner-sub">Site livré en 3 jours · Paiement en 2 fois<br>Satisfait ou remboursé ✅</div>
+    <a href="https://wa.me/212661280205?text=Bonjour%2C%20je%20voudrais%20un%20devis%20GRATUIT%20pour%20mon%20site%20web%20!" class="cta-banner-btn">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+      <span class="cta-banner-btn-text">Contactez-nous maintenant !</span>
+    </a>
+  </div>
+
+  <div class="footer">
+    <div class="footer-text">© 2026 <span>SoftHub Maroc</span> · Création de sites web professionnels au Maroc 🇲🇦</div>
+  </div>
+
+</div>
+
+<script>
+// ── 1. PARTICLE SYSTEM ──
+const canvas = document.getElementById('particles');
+const ctx = canvas.getContext('2d');
+let particles = [];
+
+function resizeCanvas() {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+}
+resizeCanvas();
+window.addEventListener('resize', resizeCanvas);
+
+class Particle {
+  constructor() { this.reset(); }
+  reset() {
+    this.x = Math.random() * canvas.width;
+    this.y = Math.random() * canvas.height;
+    this.size = Math.random() * 1.5 + 0.3;
+    this.speedX = (Math.random() - 0.5) * 0.3;
+    this.speedY = (Math.random() - 0.5) * 0.3;
+    this.opacity = Math.random() * 0.4 + 0.05;
+    this.gold = Math.random() > 0.75;
+  }
+  update() {
+    this.x += this.speedX;
+    this.y += this.speedY;
+    if(this.x < 0 || this.x > canvas.width || this.y < 0 || this.y > canvas.height) this.reset();
+  }
+  draw() {
+    ctx.beginPath();
+    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+    ctx.fillStyle = this.gold
+      ? `rgba(232,184,75,${this.opacity})`
+      : `rgba(255,255,255,${this.opacity})`;
+    ctx.fill();
+  }
+}
+
+for(let i = 0; i < 80; i++) particles.push(new Particle());
+
+function animateParticles() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  particles.forEach(p => { p.update(); p.draw(); });
+  requestAnimationFrame(animateParticles);
+}
+animateParticles();
+
+// ── 2. GLOW CURSOR ──
+const glowCursor = document.getElementById('glowCursor');
+document.addEventListener('mousemove', e => {
+  glowCursor.style.left = e.clientX + 'px';
+  glowCursor.style.top = e.clientY + 'px';
+});
+
+// ── 3. SCROLL PROGRESS BAR ──
+const progressBar = document.getElementById('progress-bar');
+window.addEventListener('scroll', () => {
+  const scrollTop = window.scrollY;
+  const docHeight = document.body.scrollHeight - window.innerHeight;
+  const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+  progressBar.style.width = progress + '%';
+});
+
+// ── 4. FADE-IN ON SCROLL ──
+const fadeEls = document.querySelectorAll('.fade-in');
+const fadeObs = new IntersectionObserver(entries => {
+  entries.forEach((e, i) => {
+    if(e.isIntersecting) {
+      setTimeout(() => e.target.classList.add('visible'), i * 100);
+    }
+  });
+}, { threshold: 0.1 });
+fadeEls.forEach(el => {
+  fadeObs.observe(el);
+});
+
+// Trigger header immediately
+setTimeout(() => {
+  document.querySelector('.header').classList.add('visible');
+}, 100);
+
+// ── 5. COUNTER ANIMATION ──
+function animateCount(el, target, suffix='') {
+  let start = 0;
+  const duration = 1500;
+  const step = timestamp => {
+    if(!start) start = timestamp;
+    const progress = Math.min((timestamp - start) / duration, 1);
+    const ease = 1 - Math.pow(1 - progress, 3);
+    const value = Math.floor(ease * target);
+    el.textContent = value + suffix;
+    if(progress < 1) requestAnimationFrame(step);
+    else el.textContent = target + suffix;
+  };
+  requestAnimationFrame(step);
+}
+
+const statsObs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if(e.isIntersecting) {
+      statsObs.unobserve(e.target);
+      const nums = e.target.querySelectorAll('.stat-n');
+      nums.forEach(n => {
+        const text = n.textContent;
+        if(text === '3j') { let s=0; const d=1000; const t=ts=>{if(!s)s=ts;const p=Math.min((ts-s)/d,1);n.textContent=Math.floor(p*3)+'j';if(p<1)requestAnimationFrame(t);else n.textContent='3j';};requestAnimationFrame(t); }
+        else if(text === '5★') { setTimeout(()=>{n.textContent='5★';n.style.transform='scale(1.2)';setTimeout(()=>n.style.transform='',300);},500); }
+        else if(text === '5') animateCount(n, 5);
+      });
+    }
+  });
+}, { threshold: 0.5 });
+const statsEl = document.querySelector('.stats');
+if(statsEl) statsObs.observe(statsEl);
+
+// ── 6. ROCKET LAUNCH ON HERO EMOJI ──
+const rocket = document.querySelector('.hero-emoji');
+if(rocket) {
+  let rocketUp = false;
+  setInterval(() => {
+    if(!rocketUp) {
+      rocketUp = true;
+      rocket.style.transition = 'transform 0.4s ease, opacity 0.4s ease';
+      rocket.style.transform = 'translateY(-20px) scale(1.3)';
+      rocket.style.opacity = '0';
+      setTimeout(() => {
+        rocket.style.transition = 'none';
+        rocket.style.transform = 'translateY(20px) scale(0.8)';
+        setTimeout(() => {
+          rocket.style.transition = 'transform 0.4s ease, opacity 0.4s ease';
+          rocket.style.transform = 'translateY(0) scale(1)';
+          rocket.style.opacity = '1';
+          rocketUp = false;
+        }, 50);
+      }, 400);
+    }
+  }, 4000);
+}
+
+// ── 7. SMOOTH STAGGER for all sections ──
+document.querySelectorAll('.link-btn, .portfolio-card, .pack, .service-btn, .sec, .cta-banner').forEach((el, i) => {
+  el.classList.add('fade-in');
+  el.style.transitionDelay = (i * 0.05) + 's';
+  fadeObs.observe(el);
+});
+
+// ── 8. TYPING EFFECT on hero tagline ──
+const tagline = document.querySelector('.tagline');
+if(tagline) {
+  const originalText = tagline.innerHTML;
+  tagline.innerHTML = '';
+  tagline.style.opacity = '1';
+  let i = 0;
+  const plainText = 'Votre agence web au Maroc 🇲🇦\nSites professionnels · Rapides · Clé en main';
+  function type() {
+    if(i < plainText.length) {
+      if(plainText[i] === '\n') tagline.innerHTML += '<br>';
+      else tagline.innerHTML += plainText[i];
+      i++;
+      setTimeout(type, 35);
+    }
+  }
+  setTimeout(type, 600);
+}
+
+// ── 9. GOLD SPARKLE on CTA button click ──
+document.querySelectorAll('.cta-banner-btn, .link-btn.whatsapp').forEach(btn => {
+  btn.addEventListener('click', function(e) {
+    for(let i = 0; i < 8; i++) {
+      const spark = document.createElement('div');
+      spark.style.cssText = `
+        position:fixed;
+        left:${e.clientX}px; top:${e.clientY}px;
+        width:6px; height:6px;
+        background:#E8B84B;
+        border-radius:50%;
+        pointer-events:none;
+        z-index:9999;
+        animation:none;
+      `;
+      document.body.appendChild(spark);
+      const angle = (i / 8) * Math.PI * 2;
+      const dist = 40 + Math.random() * 30;
+      const tx = Math.cos(angle) * dist;
+      const ty = Math.sin(angle) * dist;
+      spark.animate([
+        { transform: 'translate(0,0) scale(1)', opacity: 1 },
+        { transform: `translate(${tx}px,${ty}px) scale(0)`, opacity: 0 }
+      ], { duration: 500, easing: 'ease-out' }).onfinish = () => spark.remove();
+    }
+  });
+});
+</script>
+
+</body></html>
